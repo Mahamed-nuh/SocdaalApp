@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
-import { ArrowUpDown, Calendar, Home, Settings, LayoutDashboard } from 'lucide-react-native';
+import { FontAwesome5, Feather } from '@expo/vector-icons';
 
 export default function HomeScreen() {
   return (
@@ -12,7 +12,7 @@ export default function HomeScreen() {
 
         {/* Bus icon */}
         <Image
-          source={require('../../assets/images/bus.jpg')} // Replace with your actual bus icon path
+          source={require('../../assets/images/bus.jpg')} // Make sure this path is correct
           className="w-14 h-14 my-4"
           resizeMode="contain"
         />
@@ -26,7 +26,7 @@ export default function HomeScreen() {
               placeholderTextColor="#ccc"
             />
             <TouchableOpacity className="absolute right-3 top-3 bg-[#FF5E5E] p-1 rounded-full">
-              <ArrowUpDown size={18} color="#fff" />
+              <FontAwesome5 name="exchange-alt" size={18} color="#fff" />
             </TouchableOpacity>
           </View>
 
@@ -45,8 +45,8 @@ export default function HomeScreen() {
               <Text className="text-sm font-bold">BERRI</Text>
             </TouchableOpacity>
             <TouchableOpacity className="bg-yellow-300 rounded-full px-4 py-2 flex-row items-center space-x-1">
-              <Calendar size={16} color="#000" />
-              <Text className="text-sm font-bold">DATE</Text>
+              <Feather name="calendar" size={16} color="#000" />
+              <Text className="text-sm font-bold ml-1">DATE</Text>
             </TouchableOpacity>
           </View>
 
@@ -55,19 +55,6 @@ export default function HomeScreen() {
             <Text className="text-white text-center font-semibold">Raadi Bus</Text>
           </TouchableOpacity>
         </View>
-      </View>
-
-      {/* Bottom Navigation */}
-      <View className="flex-row justify-between px-6 py-3 bg-[#FF5E5E] rounded-t-3xl absolute bottom-0 left-0 right-0">
-        <TouchableOpacity>
-          <Home color="#fff" />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <LayoutDashboard color="#fff" />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Settings color="#fff" />
-        </TouchableOpacity>
       </View>
     </View>
   );

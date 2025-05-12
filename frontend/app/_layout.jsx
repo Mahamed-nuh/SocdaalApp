@@ -5,6 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import 'react-native-reanimated';
 import '@/global.css';
+import { UserProvider } from '../context/UserContext';
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -18,6 +19,8 @@ export default function RootLayout() {
   }
 
   return (
+      
+    <UserProvider>  
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack screenOptions={{ headerShown: false }}>
         {/* expo-router will auto handle (auth) and (tabs)/tabs.jsx */}
@@ -25,5 +28,6 @@ export default function RootLayout() {
 
       <StatusBar style="auto" />
     </ThemeProvider>
+    </UserProvider>
   );
 }

@@ -1,7 +1,12 @@
 import { Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import { useUser } from "@/hooks/useUser";
 
 const _layout = () => {
+  const { user } = useUser();
+  // Check if user is logged in
+  console.log(user);
+
   return (
     <Tabs >
       <Tabs.Screen
