@@ -1,13 +1,12 @@
 import { Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
-import { useUser } from "@/hooks/useUser";
+import UserOnly from "@/components/auth/UserOnly";
 
 const _layout = () => {
-  const { user } = useUser();
-  // Check if user is logged in
-  console.log(user);
+
 
   return (
+    <UserOnly>
     <Tabs >
       <Tabs.Screen
         name="home"
@@ -41,6 +40,7 @@ const _layout = () => {
       />
 
     </Tabs>
+    </UserOnly> 
   );
 };
 

@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import { FontAwesome5, Feather } from '@expo/vector-icons';
+import { useUser } from '@/hooks/useUser';
+
+
 
 export default function HomeScreen() {
+  // call the user email from the context 
+  const { user } = useUser();
+
   return (
     <View className="flex-1 bg-white">
       {/* Top Section */}
       <View className="bg-[#FF5E5E] rounded-b-3xl pb-6 pt-12 px-4 items-center">
-        <Text className="text-white text-xl font-semibold">Hey BSE!</Text>
+        {/* users email show */}
+        <Text className="text-white text-xl font-semibold">Hey {user.name} </Text>
         <Text className="text-white text-sm mt-1">Halked Tageysa.</Text>
 
         {/* Bus icon */}

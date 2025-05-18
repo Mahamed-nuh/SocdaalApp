@@ -11,6 +11,7 @@ export default function SignupScreen() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState(null); // State variable to hold error messages
 
 
   const { signup } = useUser(); // Destructuring user and signup function from the custom hook
@@ -18,6 +19,8 @@ export default function SignupScreen() {
 
   // Function to handle signup
   const handleSubmit = async () => {
+    setError(null); // Reset error state
+
     if (password !== confirmPassword) {
       alert('Passwords do not match');
       return;
@@ -26,7 +29,7 @@ export default function SignupScreen() {
       await signup(email, username, password);
       router.push('/(tabs)/home'); // Redirect to login page after successful signup
     } catch (error) {
-      console.log(error);
+      setError(error.message);
     }
     
   };
@@ -85,6 +88,8 @@ export default function SignupScreen() {
       <TouchableOpacity onPress={handleSubmit} className="bg-orange-400 py-3 rounded-full mb-3">
         <Text className="text-white text-center font-bold">Signup</Text>
       </TouchableOpacity>
+
+      {error && <Text className="text-red-500 text-center mb-4">{error}</Text>}
 
       <Text className="text-center">
         Have an account?{' '}
