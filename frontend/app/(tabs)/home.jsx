@@ -16,6 +16,10 @@ export default function Home() {
   const [showToModal, setShowToModal] = useState(false);
   const [fromCity, setFromCity] = useState("Hargeisa");
   const [toCity, setToCity] = useState("Borama");
+  const [loading, setLoading] = useState(false);
+  const [selectedDateOption, setSelectedDateOption] = useState("maanta");
+
+  
 
   const cities = [
     "Hargeisa", "Borama", "Berbera", "Burao",
@@ -73,11 +77,6 @@ export default function Home() {
           className="w-32 h-32 self-center mt-0"
           resizeMode="contain"
         />
-        {/* <Image
-          source={require("../assets/images/images_bus.png")}
-          className="w-24 h-12 self-center mt-2"
-          resizeMode="contain"
-        /> */}
       </View>
 
       {/* Main Content */}
@@ -114,23 +113,40 @@ export default function Home() {
           {/* Date Buttons */}
           <View className="flex-row justify-between mb-6">
             <TouchableOpacity
-              className="bg-[#FF8C42] px-5 py-3 rounded-full border-2 border-white"
-              onPress={() => setDate(new Date())}
+              className={`px-5 py-3 rounded-full border-2 border-white ${
+                selectedDateOption === "maanta" ? "bg-white" : "bg-[#FF8C42]"
+              }`}
+              onPress={() => {
+                setDate(new Date());
+                setSelectedDateOption("maanta");
+              }}
             >
-              <Text className="text-white font-semibold ">MAANTA</Text>
+              <Text className={`font-semibold ${selectedDateOption === "maanta" ? "text-[#FF8C42]" : "text-white"}`}>MAANTA</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              className="bg-[#FF8C42] px-5 py-3 rounded-full border-2 border-white"
-              onPress={() => setDate(new Date(Date.now() + 24 * 60 * 60 * 1000))}
+              className={`px-5 py-3 rounded-full border-2 border-white ${
+                selectedDateOption === "berri" ? "bg-white" : "bg-[#FF8C42]"
+              }`}
+              onPress={() => {
+                setDate(new Date(Date.now() + 24 * 60 * 60 * 1000));
+                setSelectedDateOption("berri");
+              }}
             >
-              <Text className="text-white font-semibold">BERRI</Text>
+              <Text className={`font-semibold ${selectedDateOption === "berri" ? "text-[#FF8C42]" : "text-white"}`}>BERRI</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              className="bg-[#FF8C42] px-5 py-3 rounded-full flex-row items-center border-2 border-white"
-              onPress={() => setShowPicker(true)}
-            >
-              <Calendar size={18} color="white" className="mr-1" />
-              <Text className="text-white font-semibold">{formattedDate}</Text>
+                className={`px-5 py-3 rounded-full flex-row items-center border-2 border-white ${
+                  selectedDateOption === "custom" ? "bg-white" : "bg-[#FF8C42]"
+                }`}
+                onPress={() => {
+                  setShowPicker((prev) => !prev); // toggle
+                  setSelectedDateOption("custom");
+                }}
+              >
+                <Calendar size={18} color={selectedDateOption === "custom" ? "#FF8C42" : "white"} />
+                <Text className={`ml-2 font-semibold ${selectedDateOption === "custom" ? "text-[#FF8C42]" : "text-white"}`}>
+                  {formattedDate}
+                </Text>
             </TouchableOpacity>
           </View>
 
@@ -148,11 +164,11 @@ export default function Home() {
           <TouchableOpacity
             className="bg-[#FF5A5A] py-4 rounded-full"
             onPress={() =>
-              router.push(`BusSelectionScreen?from=${fromCity}&to=${toCity}&date=${formattedDate}`)
+              router.push('/BusSelection?from=' + fromCity + '&to=' + toCity + '&date=' + formattedDate)
             }
           >
             <Text className="text-white text-center text-lg font-bold">
-              Raadi Bus
+              {loading ? "Searching..." : "Raadi Baska"}
             </Text>
           </TouchableOpacity>
         </View>

@@ -44,11 +44,8 @@ export const TicketProvider = ({ children }) => {
         try {
             const response = await databases.listDocuments(
                 DATABASE_ID,
-                COLLECTION_ID,
-                [
-                    Query.equal('userId', user.$id)
-                ]
-            )
+                COLLECTION_ID,)
+                
             setTicket(response.documents);
             console.log(response.documents);
 
