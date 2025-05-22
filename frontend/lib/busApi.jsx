@@ -1,5 +1,5 @@
 import { Query } from "react-native-appwrite";
-import { databases } from "../lib/appwrite"
+import { databases } from "./appwrite"
 
 export const getBuses = async (Form, To , date) => {
     const DATABASE = "682a4550002a8aead0a9";

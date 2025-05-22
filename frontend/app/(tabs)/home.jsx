@@ -69,8 +69,8 @@ export default function Home() {
 
       {/* Header */}
       <View className="bg-[#FF5A5A] pt-12 pb-4 px-4 rounded-b-3xl">
-        <Text className="text-white text-2xl font-semibold  self-center mt-5">Hey {user.name}</Text>
-        <Text className="text-white text-xl self-center">Halked Tageysa.</Text>
+        <Text className="text-white text-3xl font-semibold  self-center mt-5">Hey {user.name} 👋🏻</Text>
+        <Text className="text-white text-2xl self-center pt-1">Halked Tageysa.</Text>
 
         <Image
           source={require('../../assets/images/bus.png')} // Make sure this path is correct

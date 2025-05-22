@@ -65,14 +65,17 @@ export default function BusSelectionScreen() {
             }}>
 
 
-              <View className="bg-white p-4 mb-4 rounded-lg shadow">
-                <Text className="text-lg font-bold">{item.company}</Text>
-                <Text className="text-gray-600">Time: {item.busTime}</Text>
-                <Text className="text-gray-600">Price: {item.price}</Text>
-                <Text className="text-gray-600">Duration: {item.durationTime}</Text>
-                <Text className="text-gray-600">Date: {item.date}</Text>
-                <Text className="text-gray-600">Seats: {item.seats}</Text>
-              </View>
+              <View className="mx-4 -mt-2 bg-white rounded-xl shadow-lg p-4 pt-6 mb-8 ">
+                      <View className="flex-row justify-between items-center">
+                        <Text className="text-2xl font-semibold text-gray-700">{item.company} </Text>
+                        <Text className="text-2xl font-bold text-[#FFA500]">{item.price}</Text>
+                      </View>
+                      <View className="flex-row justify-between mt-2">
+                        <Text className="text-gray-600">{item.busTime}</Text>
+                        <Text className="text-gray-600">{item.durationTime}</Text>
+                      </View>
+                      <Text className="text-green-500 mt-2">{item.seats} qof aya hadhey</Text>
+                    </View>
             </Pressable>
           )}
         />

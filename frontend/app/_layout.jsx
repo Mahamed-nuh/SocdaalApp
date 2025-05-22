@@ -7,6 +7,7 @@ import 'react-native-reanimated';
 import '@/global.css';
 import { UserProvider } from '../context/UserContext';
 import { TicketProvider } from '@/context/TicketContext';
+import { BookingProvider } from '@/context/BookingContext';
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -23,13 +24,15 @@ export default function RootLayout() {
       
     <UserProvider>  
       <TicketProvider>
-        <ThemeProvider value={colorScheme === 'FF5A5A' ? DarkTheme : DefaultTheme}>
-          <Stack screenOptions={{ headerShown: false }}>
-            {/* expo-router will auto handle (auth) and (tabs)/tabs.jsx */}
-          </Stack>
+        <BookingProvider>
+          <ThemeProvider value={colorScheme === 'FF5A5A' ? DarkTheme : DefaultTheme}>
+            <Stack screenOptions={{ headerShown: false }}>
+              {/* expo-router will auto handle (auth) and (tabs)/tabs.jsx */}
+            </Stack>
 
-          <StatusBar style="auto" />
-        </ThemeProvider>
+            <StatusBar style="auto" />
+          </ThemeProvider>
+        </BookingProvider>
       </TicketProvider>
     </UserProvider>
   );

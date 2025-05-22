@@ -15,5 +15,5 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "nativewind-env.d.ts"
-, "app/(tabs)/test.jsx", "hooks/useTickets.js", "hooks/useUser.js"  ]
+, "app/(tabs)/test.jsx", "hooks/useTickets.js", "hooks/useUser.js", "lib/bookedSeats.js"  ]
 }
