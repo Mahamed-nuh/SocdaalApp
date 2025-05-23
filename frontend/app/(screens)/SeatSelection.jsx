@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, SafeAreaView, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import { ChevronLeft, ArrowLeftRight } from 'lucide-react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
-import { getBookedSeats } from '../../lib/seatapi'; 
 import { useUser } from '../../hooks/useUser';
 import { useBooking } from '../../hooks/useBooking'; // <-- import your booking hook
 
@@ -82,67 +81,49 @@ const handleSeatPress = (rowIndex, colIndex) => {
 
 
 
-
 const handleBooking = async () => {
-  let allSuccess = true;
+  const numericPrice = parseInt(price.replace(/[^\d]/g, '')); // removes "sh" and ","
+  const totalPrice = numericPrice * selectedSeats.length;
 
-  // Loop over all selected seats and book them
-  for (const seatId of selectedSeats) {
-    const success = await createBooking({
+  router.push({
+    pathname: '/(screens)/PaymentScreen',
+    params: {
       from,
       to,
-      busdate: busDate,
-      bustime: busTime,
+      busDate,
+      busTime,
       company,
-      seatId,
-      userId: user?.$id,
-      userName: user?.name,
-      price, // price per seat
-    });
+      seats: selectedSeats.join(','),
+      totalPrice: totalPrice.toString(),
+      price: numericPrice.toString(), // optional, can show price per seat
+    },
+  });
 
-    if (!success) {
-      allSuccess = false;
-      break; // stop if any booking fails
-    }
-  }
-
-  if (allSuccess) {
-    const totalPrice = parseInt(price) * selectedSeats.length;
-
-
-    Alert.alert(
-      "Booking Successful",
-      `You booked seat: ${selectedSeats.join(', ')}\nTotal Price: ${totalPrice.toLocaleString()}`
-    );
-
-    setSelectedSeats([]);
-    router.push('/PaymentScreen', {
-      params: {
-        from,
-        to,
-        busDate,
-        busTime,
-        company,
-        seats: selectedSeats.join(', '),
-        totalPrice,
-      },
-    });
-  } else {
-    Alert.alert("Booking Failed", "Please try again.");
-  }
+  console.log({
+    from, to, busDate, busTime, company,
+    seats: selectedSeats.join(','),
+    totalPrice: totalPrice.toString(),
+    price: numericPrice.toString()
+  });
 };
 
 
+
+
   return (
-    <SafeAreaView className="flex-1 bg-white">
-      <View className="bg-[#FF5A5A] px-4 pb-6">
+    <View className="flex-1 bg-white">
+      <View className="bg-[#FF5A5A] py-8 px-4 rounded-b-3xl">
         <View className="flex-row items-center justify-between mt-4">
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <ChevronLeft size={28} color="white" />
+          <TouchableOpacity
+            onPress={() => router.back()}
+            className="p-2"
+          >
+            <ChevronLeft size={32} color="white" />
           </TouchableOpacity>
-          <Text className="text-white text-2xl text-center flex-1 font-semibold">
+          <Text className="text-white text-xl text-center flex-1 font-bold">
             Dooro Kursigaaga!
           </Text>
+          <View style={{ width: 40 }} />
         </View>
         <View className="flex-row items-center justify-center space-x-4 mt-4">
           <Text className="text-white text-2xl font-bold">{from}</Text>
@@ -217,6 +198,6 @@ const handleBooking = async () => {
           </Text>
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }

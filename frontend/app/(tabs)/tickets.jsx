@@ -15,7 +15,7 @@ export default function MyTicketsScreen() {
     },
     {
       pnr: '13392789',
-      from: '8:05 PM, Jarka - Pick up near Suuqa - Pick up\nSheikh Ali, 959591132, 9028298789',
+      from: '8:05 PM, Jarka ',
       to: '6:30 AM, Halane\nHalane',
       pickupTime: '8:05 PM',
       pickupDate: 'Sun, 13 Jan',

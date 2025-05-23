@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, Image, FlatList, Pressable, ActivityIndicator } from "react-native";
+import { View, Text, Image, FlatList, Pressable, ActivityIndicator, TouchableOpacity } from "react-native";
 import { router, useLocalSearchParams } from "expo-router"; 
 import { getBuses } from "../../lib/busApi" // make sure the path is correct
+import { ArrowLeftRight } from "lucide-react-native";
 
 export default function BusSelectionScreen() {
   const { from, to, date } = useLocalSearchParams();
@@ -28,11 +29,25 @@ export default function BusSelectionScreen() {
 
   return (
     <View className="flex-1 bg-white">
-      {/* Header */}
       <View className="bg-[#FF5A5A] py-8 px-4 rounded-b-3xl">
-        <Text className="text-white text-center text-xl font-bold">Dooro bus</Text>
+        <View className="flex-row items-center justify-between mt-4">
+          <TouchableOpacity
+            onPress={() => router.back()}
+            className="p-2"
+          >
+            {/* Fix: wrap the arrow in a Text component only */}
+            <Text className="text-5xl text-white">{'‹'}</Text>
+          </TouchableOpacity>
+          <Text className="text-white text-xl text-center flex-1 font-bold">
+            Dooro bus
+          </Text>
+          {/* Fix: use an empty View for spacing, not a comment */}
+          <View style={{ width: 40 }} />
+        </View>
         <Text className="text-white text-center text-lg italic mt-2">
-          {from} ↔ {to}
+          {from} 
+                    <ArrowLeftRight size={20} color="white" />
+          {to}
         </Text>
         <Text className="text-white text-center">{date}</Text>
 
