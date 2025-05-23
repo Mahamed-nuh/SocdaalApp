@@ -43,6 +43,23 @@ export const BookingProvider = ({ children }) => {
         console.error("Error fetching bookings:", error);
         }
     }
+
+    // Fetch bookings by user ID (can be called manually)
+    async function fetchBookingsByUserId(userId = user?.$id) {
+        if (!userId) return;
+        try {
+            const response = await databases.listDocuments(
+                DATABASE_ID,
+                COLLECTION_ID,
+                [Query.equal("userId", userId)]
+            );
+            setBookedSeats(response.documents);
+            return response.documents;
+        } catch (error) {
+            console.error("Error fetching bookings by user ID:", error);
+            return [];
+        }
+    }
     
     useEffect(() => {
         if (user) {
@@ -94,7 +111,7 @@ export const BookingProvider = ({ children }) => {
 
     
     return (
-        <BookingContext.Provider value={{ bookedSeats, createBooking, getBookings, getBookedSeats, updateSeatStatus }}>
+        <BookingContext.Provider value={{ bookedSeats, createBooking, getBookings, getBookedSeats, updateSeatStatus, fetchBookingsByUserId }}>
         {children}
         </BookingContext.Provider>
     );

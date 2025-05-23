@@ -37,7 +37,7 @@ export default function LoginScreen() {
         </TouchableOpacity>
         <Image
           source={require('../../assets/images/Bus-Booking-Engine.png')}
-          className="w-64 h-64 self-center"
+          className="w-56 h-56 self-center mb-6 mt-0"
           resizeMode="contain"
         />
         <Text className="text-xl font-bold text-center mt-4 ">Welcome</Text>

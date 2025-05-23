@@ -43,6 +43,11 @@ const PaymentsScreen = () => {
   } = useLocalSearchParams();
 
   const handlePayment = async () => {
+    if (!senderNumber.trim()) {
+      Alert.alert("Error", "Fadlan geli numberka lagasoo dirayo.");
+      return;
+    }
+
     const seatArray = seats.split(',');
 
     for (const seatId of seatArray) {
@@ -65,9 +70,7 @@ const PaymentsScreen = () => {
         return;
       }
     }
-
-    Alert.alert("Payment Successful", `You booked: ${seats}\nMethod: ${selectedMethod}`);
-    router.push('/(tabs)/MyTicketsScreen'); // redirect to tickets or success page
+    router.push('/(tabs)/tickets'); // redirect to tickets or success page
   };
 
   return (

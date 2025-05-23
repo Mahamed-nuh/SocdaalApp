@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, Image, FlatList, Pressable, ActivityIndicator, TouchableOpacity } from "react-native";
 import { router, useLocalSearchParams } from "expo-router"; 
-import { getBuses } from "../../lib/busApi" // make sure the path is correct
 import { ArrowLeftRight } from "lucide-react-native";
+import { getBuses } from "../../lib/busApi";
 
 export default function BusSelectionScreen() {
   const { from, to, date } = useLocalSearchParams();
@@ -19,8 +19,13 @@ export default function BusSelectionScreen() {
   useEffect(() => {
     const fetchFilteredBuses = async () => {
       setLoading(true);
-      const results = await getBuses(from, to, date);
-      setBuses(results);
+      try {
+        const results = await getBuses(from, to, date);
+        setBuses(results);
+      } catch (e) {
+        console.error("Failed to fetch buses:", e);
+        setBuses([]); // fallback to empty array
+      }
       setLoading(false);
     };
 

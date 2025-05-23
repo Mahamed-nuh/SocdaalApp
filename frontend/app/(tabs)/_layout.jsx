@@ -9,7 +9,7 @@ const _layout = () => {
         screenOptions={{
           tabBarStyle: { backgroundColor: "#FF5A5A" },
           tabBarActiveTintColor: "#fff",
-          tabBarInactiveTintColor: "#fce4e4",
+          tabBarInactiveTintColor: "black",
         }}
       >
         <Tabs.Screen

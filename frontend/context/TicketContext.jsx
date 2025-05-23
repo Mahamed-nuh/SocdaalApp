@@ -25,16 +25,6 @@ export const TicketProvider = ({ children }) => {
                     Permission.delete(Role.user(user.$id)),
                 ]
             )
-
-        } catch (error) {
-            console.error(error.message);
-        }
-        
-    }
-
-    async function getTicketByID(id) {
-        try {
-
         } catch (error) {
             console.error(error.message);
         }
@@ -45,26 +35,8 @@ export const TicketProvider = ({ children }) => {
             const response = await databases.listDocuments(
                 DATABASE_ID,
                 COLLECTION_ID,)
-                
             setTicket(response.documents);
             console.log(response.documents);
-
-        } catch (error) {
-            console.error(error.message);
-        }
-    }
-
-    async function deleteTicket() {
-        try {
-
-        } catch (error) {
-            console.error(error.message);
-        }
-    }
-
-    async function updateTicket() {
-        try {
-
         } catch (error) {
             console.error(error.message);
         }
@@ -79,7 +51,7 @@ export const TicketProvider = ({ children }) => {
     }, [user]);
 
     return (
-        <TicketContext.Provider value={{ Ticket, setTicket, createTicket, getTicket, deleteTicket, updateTicket, getTicketByID }}>
+        <TicketContext.Provider value={{ Ticket, setTicket, createTicket, getTicket }}>
             {children}
         </TicketContext.Provider>
     );
