@@ -12,8 +12,8 @@ export default function MyTicketsScreen() {
   return (
     <SafeAreaView className="flex-1 bg-black">
       {/* Header */}
-      <View className="bg-[#FF5A5A] rounded-b-3xl p-4">
-        <Text className="text-white text-xl font-bold">My Tickets</Text>
+      <View className="bg-[#ff5e5e] rounded-b-3xl px-4 pt-16 pb-2 mt-0 items-center">
+        <Text className="text-white text-xl font-bold mb-11 mt-0">My Tickets</Text>
       </View>
 
       <View className="bg-white -mt-4 rounded-t-3xl px-4 pt-4 pb-8 flex-1">
@@ -52,7 +52,7 @@ export default function MyTicketsScreen() {
               {/* Bus Info */}
               <View className="mt-4 flex-row justify-between items-center">
                 <Text className="text-black font-semibold">{ticket.company}</Text>
-                <Text className="text-gray-600 text-sm">{ticket.seatId} Seats</Text>
+                <Text className="text-gray-600 text-sm">Seat: {ticket.seatId}</Text>
               </View>
               <Text className="text-gray-400 text-xs mt-1">2x1 (30) A/C SLEEPER</Text>
             </View>
