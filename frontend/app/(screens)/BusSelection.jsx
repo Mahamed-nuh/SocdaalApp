@@ -94,7 +94,8 @@ export default function BusSelectionScreen() {
                         <Text className="text-gray-600">{item.busTime}</Text>
                         <Text className="text-gray-600">{item.durationTime}</Text>
                       </View>
-                      <Text className="text-green-500 mt-2">{item.seats} qof aya hadhey</Text>
+                      {/* Changed seats text to default "10 Kursi" */}
+                      <Text className="text-green-500 mt-2">10 Kursi</Text>
                     </View>
             </Pressable>
           )}

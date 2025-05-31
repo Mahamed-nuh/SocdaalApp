@@ -142,7 +142,7 @@ const handleBooking = async () => {
           <Text className="text-gray-600">{busTime}</Text>
           <Text className="text-gray-600">{durationTime}h</Text>
         </View>
-        <Text className="text-green-500 mt-2">{seats} qof aya hadhey</Text>
+        <Text className="text-green-500 mt-2">10 Kursi</Text>
       </View>
 
       {/* Seat Legend */}
