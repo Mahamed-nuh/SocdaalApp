@@ -1,73 +1,92 @@
 # 🚍 Socdaal App
 
-Socdaal App is a mobile application designed to simplify bus transportation booking and management in Borama. The app integrates multiple transportation companies into one unified platform where users can:
+**Socdaal** is a mobile application built to streamline bus transportation booking in Borama. It brings together multiple transportation companies into one platform where users can:
 
 * Select a bus company
-* Choose departure times
+* Choose a departure time
 * Reserve seats
 * Make payments
 
-This project includes both frontend and backend directories, but only one is currently active.
+This repository contains both frontend and backend folders, but **only the frontend is currently active**.
+
 
 
 ## 📁 Project Structure
 
+```
 socdaal/
 ├── frontend/   # React Native app (Active)
 └── backend/    # Placeholder backend (Not in use currently)
-
+```
 
 ### ✅ `frontend/`
 
 * Built with **React Native**, **Tailwind CSS**, and **Expo Router**
-* Fully functional
-* Uses **Appwrite** as the backend for now
-* Handles:
-
-  * Authentication
-  * Seat selection
-  * Booking logic
-  * UI components and navigation
+* Uses **Appwrite** as the backend service
+* Fully functional for development and testing
 
 ### ⚠️ `backend/`
 
-* This folder **does not currently work** for the Socdaal app
-* It may contain initial or experimental code
-* **Appwrite** is being used instead for all backend services at this stage
+* Not used in the current app version
+* Reserved for future backend implementation
+* All current backend logic is handled by Appwrite
+
+
+
+## ⚙️ Setup & Run Instructions
+
+### 1. 🔧 Configure Appwrite Connection
+
+Before running the app, you must connect it to your Appwrite backend:
+
+* In the `frontend` folder, locate the Appwrite config file (e.g. `lib/appwrite.js').
+* Update it with your **Appwrite endpoint**, **project ID**, and **collection/database IDs**.
+
+Example (`utils/appwriteConfig.js`):
+
+```js
+export const APPWRITE_ENDPOINT = "https://cloud.appwrite.io/v1";
+export const APPWRITE_PROJECT_ID = "your_project_id_here";
+export const DATABASE_ID = "your_database_id";
+export const COLLECTION_ID = "your_collection_id";
+```
+
+> 💡 You can find these values in your Appwrite console.
 
 ---
 
-## 🔗 Future Plans
+### 2. 📦 Install Dependencies
 
-* Connect the **frontend** to a **custom backend** (currently under development)
-* Replace temporary services in Appwrite with real-time backend APIs
-* Add features like payment integration, company dashboards, and notifications
-
-
-## 💻 How to Run the Project
-
-### Prerequisites
-
-* Node.js
-* Expo CLI
-* Appwrite instance (locally or on cloud)
-
-### Steps
-
-
+```bash
 cd frontend
 npm install
+```
+
+---
+
+### 3. 🚀 Start the App
+
+```bash
 npx expo start
+```
 
+Scan the QR code using the **Expo Go app** on your mobile device to run the app.
 
-Make sure your Appwrite endpoint and project ID are correctly set in your environment/config files.
+---
 
+## 🔮 Future Plans
 
+* Replace Appwrite with a **custom backend** (under development)
+* Implement:
+
+  * Company admin dashboards
+  * Real-time seat booking updates
+  * Payment integration
+  * Push notifications
+
+---
 
 ## 📬 Contact
 
-If you have questions or want to contribute:
-
-* Email: **[Mahamednuh353@gmail.com](mailto:Mahamednuh353@gmail.com)**
-* Developer: **Mahamed Nuh Muse**
-
+* **Developer:** Mahamed Nuh Muse
+* **Email:** [Mahamednuh353@gmail.com](mailto:Mahamednuh353@gmail.com)
