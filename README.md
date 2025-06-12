@@ -42,7 +42,7 @@ Before running the app, you must connect it to your Appwrite backend:
 * In the `frontend` folder, locate the Appwrite config file (e.g. `lib/appwrite.js').
 * Update it with your **Appwrite endpoint**, **project ID**, and **collection/database IDs**.
 
-Example (`utils/appwriteConfig.js`):
+Example (`lib/appwrite.js`):
 
 ```js
 export const APPWRITE_ENDPOINT = "https://cloud.appwrite.io/v1";
